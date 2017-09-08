@@ -3,7 +3,7 @@
 {% endcomment %}
 
 <div class="featured__offers-title">
-  <h2>{{ 'homepage.sections.featured_offers_title' | t }}</h2>
+  <h2 class="icon-settings">{{ 'homepage.sections.featured_offers_title' | t }}</h2>
 </div>
 <div class="featured__offers-wrapper">
   {% if settings.offers_collection != blank and collections[settings.offers_collection].handle == settings.offers_collection and collections[settings.offers_collection].products_count > 0 %}

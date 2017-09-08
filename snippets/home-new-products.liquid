@@ -1,5 +1,5 @@
 <div class="featured__products-title">
-  <h2>{{ 'homepage.sections.new_products_title' | t }}</h2>
+  <h2 class="icon-settings">{{ 'homepage.sections.new_products_title' | t }}</h2>
 </div>
 <div class="collection-wrapper new__products-wrapper">
   {% if settings.new_products_collection != blank and collections[settings.new_products_collection].handle == settings.new_products_collection and collections[settings.new_products_collection].products_count > 0 %}
