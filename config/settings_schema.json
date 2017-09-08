@@ -418,9 +418,16 @@
         "content": "Ad Section"
       },
       {
+        "type": "checkbox",
+        "id": "use_home_right_ad",
+        "label": "Enable Home Page right ad",
+        "default": true
+      },
+      {
         "type": "image_picker",
         "id": "home_right_ad",
-        "label": "Home Page Right Ad"
+        "label": "Home Page Right Ad",
+        "info": "335 x 400"
       },
       {
         "type": "url",

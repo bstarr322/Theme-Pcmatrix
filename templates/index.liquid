@@ -20,15 +20,21 @@
     {% if settings.use_featured_products %}
     	{% include 'home-featured-products' %}
     {% endif %}
-    
-    
   </div>
+
   <div class="right-sidebar">
     {% if settings.use_brand_lists %}
     	{% include 'section-brand-lists' %}
     {% endif %}
+
     {% if settings.use_best_sellers %}
     	{% include 'section-best-sellers' %}
+    {% endif %}
+
+    {% if settings.use_home_right_ad %}
+      <a href="{{ settings.home_right_ad_link }}">
+        {{ settings.home_right_ad | img_url: 'master' | img_tag }}
+      </a>
     {% endif %}
   </div>
 </div>
@@ -36,9 +42,7 @@
 
 <div  class="footer-ads">
   <div class="wrapper">
-    
     <hr>
-    
     <h1>Expert Service. Unbeatable Price.</h1>
     {% for i in (1..3) %}
       {% capture ad_image %}footer_ad_{{i}}.png{% endcapture %}

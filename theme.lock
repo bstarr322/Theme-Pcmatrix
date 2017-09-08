@@ -194,13 +194,13 @@ assets/tile.gif:
 assets/timber.js.liquid:
   development: 2017-09-01T11:09:51-04:00   519738ee269c21476702580b712a53a6
 assets/timber.scss.liquid:
-  development: 2017-09-08T12:54:13-04:00   242dec81bc652af8e3e51628310ccab5
+  development: 2017-09-08T13:39:44-04:00   0e6b6695d79fb1c8bd1659c08868fb8a
 assets/vendors.js:
   development: 2017-09-02T11:56:55-04:00   032d17cd2dcc5d608bc5d1fb30a2dbfd
 config/settings_data.json:
   development: 2017-09-08T13:07:10-04:00   3d73ffef376c002b198761900e51c8b1
 config/settings_schema.json:
-  development: 2017-09-08T13:06:37-04:00   6a46b3fa05d3a8ae9c06069d958a9a92
+  development: 2017-09-08T13:42:46-04:00   f55a5a3a77f88d939d68f46a0a2e78aa
 layout/theme.liquid:
   development: 2017-09-08T10:16:35-04:00   b7b5e431b436f6157eb58a55d7218e3c
 locales/de.json:
@@ -296,7 +296,7 @@ snippets/search-bar.liquid:
 snippets/section-best-sellers.liquid:
   development: 2017-09-08T10:15:59-04:00   ee28f151efa887d113598d666f9ccf74
 snippets/section-brand-lists.liquid:
-  development: 2017-09-08T10:51:40-04:00   247ecdfb566c105c48cf4be804046ce2
+  development: 2017-09-08T13:39:32-04:00   38d55b71688b57c5e5f9f0993aca8be7
 snippets/social-meta-tags.liquid:
   development: 2017-07-20T17:12:02-04:00   e7c97d7cb76c7925dd144dfb7b188cac
 snippets/social-profiles.liquid:
@@ -336,7 +336,7 @@ templates/customers/reset_password.liquid:
 templates/gift_card.liquid:
   development: 2017-07-20T17:12:02-04:00   c1ae0f8232e003fac57213d1353e513c
 templates/index.liquid:
-  development: 2017-09-08T12:49:17-04:00   ed8c5adab111c969a11da10b29dfd3a7
+  development: 2017-09-08T13:28:35-04:00   3a4acb1d4e10d39e9fc6f298f0c8a67c
 templates/list-collections.liquid:
   development: 2017-07-20T17:12:02-04:00   380da281c4820602d95334029b03aa84
 templates/page.compare.liquid:
