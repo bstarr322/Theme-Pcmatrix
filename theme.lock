@@ -194,7 +194,7 @@ assets/tile.gif:
 assets/timber.js.liquid:
   development: 2017-09-01T11:09:51-04:00   519738ee269c21476702580b712a53a6
 assets/timber.scss.liquid:
-  development: 2017-09-08T14:45:52-04:00   8be0d1b7ec1adb11020e982e8954ab10
+  development: 2017-09-08T16:03:38-04:00   fa45746c8b9fd296d537a5724d3ac7c1
 assets/vendors.js:
   development: 2017-09-02T11:56:55-04:00   032d17cd2dcc5d608bc5d1fb30a2dbfd
 config/settings_data.json:
@@ -294,7 +294,7 @@ snippets/right-grid-item.liquid:
 snippets/search-bar.liquid:
   development: 2017-07-21T11:44:19-04:00   d647451b263a00e6b7d0d96ef7e846e1
 snippets/section-best-sellers.liquid:
-  development: 2017-09-08T13:49:16-04:00   9ab806542b08ae026d0562a53277267f
+  development: 2017-09-08T15:54:22-04:00   9cd7a161eaa7348c0b3946c1da26235c
 snippets/section-brand-lists.liquid:
   development: 2017-09-08T13:39:32-04:00   38d55b71688b57c5e5f9f0993aca8be7
 snippets/social-meta-tags.liquid:

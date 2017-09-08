@@ -154,6 +154,8 @@ $headerFontWeight: 700;
 $bodyFontStack: "Roboto", sans-serif;
 $baseFontSize: 14px; // Henceforth known as 1em
 
+$fontHeader: 22px;
+
 @font-face {
   font-family: 'icons';
   src: url('{{ "icons.eot" | asset_url }}');
@@ -2467,7 +2469,7 @@ label.error {
     align-items: center;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 22px;
+    font-size: $fontHeader;
     letter-spacing: 0.04em;
     padding: 5px 0 5px $gutter;
     margin: 0;
@@ -4271,6 +4273,17 @@ label.error {
       background-repeat: no-repeat;
     }
   }
+
+  .item-title {
+    a {
+      color: #222;
+      font-weight: bold;
+      
+      &:hover {
+        color: #25aef5;
+      }
+    }
+  }
 }
 
 
@@ -4636,6 +4649,7 @@ label.error {
 
 /* Owl Carousel Custom Styles */
 .owl-carousel {
+  padding: 0 $gutter;
   position: relative;
   
   .owl-prev {
@@ -4658,6 +4672,10 @@ label.error {
 }
 .owl-item {
   border-right: 1px solid #eee;
+
+  &.active:nth-child(3n+1) {
+    border-right: initial;
+  }
 }
 
 
@@ -4729,5 +4747,12 @@ label.error {
 .new__products-content {
   .product__single-grid {
     height: initial;
+  }
+}
+
+.best-sellers-title,
+.section-brands-wrapper {
+  h2 {
+    font-size: $fontHeader;
   }
 }

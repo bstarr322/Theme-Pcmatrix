@@ -5,7 +5,7 @@
   
   {% if settings.best_sellers_collection != blank and collections[settings.best_sellers_collection].handle == settings.best_sellers_collection and collections[settings.best_sellers_collection].products_count > 0 %}
   <div class="best-sellers-content clearfix">
-    {% for product in collections[settings.best_sellers_collection].products %}
+    {% for product in collections[settings.best_sellers_collection].products | limit: 9 %}
     {% include 'right-grid-item' %}
     {% endfor %}
   </div>
