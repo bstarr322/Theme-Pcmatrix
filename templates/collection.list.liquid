@@ -1,0 +1,133 @@
+<!-- /templates/collection.list.liquid -->
+{% comment %}
+
+  By using a variation of the 'view all' parameter technique, you can create
+  a custom layout for any template by adding ?view=xxxx
+
+  In this example, you can have a list view of your collection page by going to
+  /collections/all?view=list
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+  For more information on the ?view parameter:
+    - http://docs.shopify.com/support/configuration/store-customization/can-i-show-more-than-50-products-on-my-homepage-can-i-add-a-view-all-function-to-my-collection-pages#add-view-all
+
+{% endcomment %}
+
+{% paginate collection.products by 12 %}
+
+{% include 'breadcrumb' %}
+
+{% comment %}
+  Use .grid--rev so that the collection tags appear below the products on mobile
+{% endcomment %}
+<div class="wrapper collection__list-grid">
+  <div class="collection__filter-wrapper">
+    <div class="collection__filter-content">
+      ssssssssssssss
+      {% include 'collection-sidebar' %}
+    </div>
+  </div>
+  
+  <div class="collection__list-wrapper">
+    
+    <div class="collection__grid-banner">
+      <div class="collection__banner-slider">
+        <ul class="slides">
+          <li>
+            <a><img src="{{ 'collection-slider1.png' | asset_url}}" /></a>
+          </li>
+          <li>
+            <a><img src="{{ 'collection-slider2.png' | asset_url}}" /></a>
+          </li>
+          <li>
+            <a><img src="{{ 'collection-slider3.png' | asset_url}}" /></a>
+          </li>
+          <li>
+            <a><img src="{{ 'collection-slider4.png' | asset_url}}" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="collection__main-list">
+      {% comment %}
+        Different markup if a collection description exists
+      {% endcomment %}
+      {% if collection.description != blank %}
+        <div class="section-header clearfix">
+          <div class="section-header__right">
+            {% include 'collection-sorting' %}
+          </div>
+        </div>
+      {% else %}
+        <header class="section-header clearfix">
+          <h1 class="section-header__title section-header__left">{{ collection.title }}</h1>
+          <div class="section-header__right">
+            {% include 'collection-sorting' %}
+          </div>
+        </header>
+      {% endif %}
+
+      {% comment %}
+        Use class grid-uniform to have evenly sized columns clear
+        each other properly at each breakpoint.
+      {% endcomment %}
+      <div class="product__list-wrapper clearfix">
+
+        <!-- begin product list output -->
+        {% for product in collection.products %}
+
+          {% comment %}
+            Check if the product is on sale and set a variable to be used below.
+          {% endcomment %}
+          {% assign on_sale = false %}
+          {% if product.compare_at_price > product.price %}
+            {% assign on_sale = true %}
+          {% endif %}
+
+          {% comment %}
+            Check if the product is sold out and set a variable to be used below.
+          {% endcomment %}
+          {% assign sold_out = true %}
+          {% if product.available %}
+            {% assign sold_out = false %}
+          {% endif %}
+
+          {% include 'product-list-item' %}
+
+        {% else %}
+
+          <div class="grid__item">
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+
+        {% endfor %}
+        <!-- //product list output -->
+
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="tab-wrapper">
+      <ul class="tabs">
+        <li><a href="#tab-1">Overview</a></li>
+        <li><a href="#tab-2">FAQ</a></li>
+      </ul>
+      <div id="tab-1" class="tab-pane">
+        {{ collection.description }}
+      </div>
+      <div id="tab-2" class="tab-pane">
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endpaginate %}

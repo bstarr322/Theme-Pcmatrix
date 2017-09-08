@@ -1,0 +1,36 @@
+{% comment %}
+
+{% endcomment %}
+
+<div class="featured__offers-title">
+  <h2>{{ 'homepage.sections.featured_offers_title' | t }}</h2>
+</div>
+<div class="featured__offers-wrapper">
+  {% if settings.offers_collection != blank and collections[settings.offers_collection].handle == settings.offers_collection and collections[settings.offers_collection].products_count > 0 %}
+  <div class="featured__offers-content owl-carousel clearfix">
+    {% for product in collections[settings.offers_collection].products | limit: 3 %}
+    {% include 'product-offer-loop' %}
+    {% endfor %}
+  </div>
+  {% elsif collections.[settings.offers_collection].handle == 'frontpage' and collections.frontpage.products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_frontpage_offers_html' | t }}</p>
+  </div>
+  {% elsif settings.offers_collection != blank and collections[settings.offers_collection].handle != 'frontpage' and collections[settings.offers_collection].products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_offers_html' | t }}</p>
+  </div>
+  {% else %}
+  <div>
+    <p>{{ 'homepage.sections.no_featured' | t }}</p>
+  </div>
+  {% endif %}
+    
+  <!--  No need to use this view more  -->
+  <div class="featured__product-view clearfix hide">
+    <a href="/collections/{{ settings.offers_collection }}">
+      View More Deals
+      {% include 'icon-arrow-right' %}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="right__product-items-wrapper">
+  <div class="best-sellers-title">
+    <h2 class="uppercase">{{ 'homepage.sections.best_sellers_title' | t }}</h2>
+  </div>
+  
+  {% if settings.best_sellers_collection != blank and collections[settings.best_sellers_collection].handle == settings.best_sellers_collection and collections[settings.best_sellers_collection].products_count > 0 %}
+  <div class="best-sellers-content clearfix">
+    {% for product in collections[settings.best_sellers_collection].products | limit: 4 %}
+    {% include 'right-grid-item' %}
+    {% endfor %}
+  </div>
+  {% elsif collections.[settings.best_sellers_collection].handle == 'frontpage' and collections.frontpage.products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_frontpage_products_html' | t }}</p>
+  </div>
+  {% elsif settings.best_sellers_collection != blank and collections[settings.best_sellers_collection].handle != 'frontpage' and collections[settings.best_sellers_collection].products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_products_html' | t }}</p>
+  </div>
+  {% else %}
+  <div>
+    <p>{{ 'homepage.sections.no_featured' | t }}</p>
+  </div>
+  {% endif %}
+</div>

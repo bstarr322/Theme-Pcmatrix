@@ -1,0 +1,12 @@
+{% comment %}
+Just use 6 brands for now.
+{% endcomment %}
+<!-- Section Brand Lists -->
+<div class="section-brands-list">
+  {% for i in (1..6) %}
+  {% capture brand_img %}brand_{{i}}{% endcapture %}
+  {% capture brand_link %}brand_link_{{i}}{% endcapture %}
+  <a href="{{ settings[brand_link] }}" title="Brand"><img alt="Brand" src="{{ settings[brand_img] | img_url: 'master' }}"></a>
+  {% endfor %}
+</div>
+<!-- /Section Brand Lists -->

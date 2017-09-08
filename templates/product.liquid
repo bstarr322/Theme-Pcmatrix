@@ -1,0 +1,245 @@
+<!-- /templates/product.liquid -->
+{% comment %}
+
+  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+  and allow search engines to easily understand what the content is.
+
+  For more information on these Scheme.org tags, visit:
+    - http://schema.org/docs/gs.html
+
+{% endcomment %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+<div itemscope itemtype="http://schema.org/Product">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+  <div class="wrapper">
+    {% include 'breadcrumb' %}
+  </div>
+  
+  <div class="wrapper product__single-container">
+    <div class="product__single-details">
+      <div class="grid">
+        <div class="grid__item large--one-half text-center product-main__photos">
+          <div class="product-single__photos" id="ProductPhoto">
+            {% include 'product-gallery' %}
+          </div>
+        </div>
+
+        <div class="grid__item large--one-half product-single__content">
+
+          <h1 itemprop="name">{{ product.title }}</h1>
+
+          <div class="sku_style clearfix">
+            {% unless current_variant.sku == blank %}
+            <strong>Sku:</strong> <span class="product-sku">{{ current_variant.sku }}</span>
+            {% endunless %}
+            <p class="product-single__availability">
+              <span id="product-variant-availability">
+                {% if current_variant.available %}
+                <span class="text-success">In Stock</span>
+                {% else %}
+                <span class="text-danger">Sold Out</span>
+                {% endif %}
+              </span>
+            </p>
+          </div>
+
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+          </div>
+          
+          <div class="short-description">
+            {{ product.metafields.info.short_desc }}
+            <a class="read-more-desc" href="#product_description">
+              {% include 'icon-read-more' %}
+              Read More...
+            </a>
+          </div>
+          {% comment %}
+          If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
+          in the URL, we can show next/previous links to other products in the collection.
+          {% endcomment %}
+          
+          {% if collection %}
+            {% if collection.previous_product or collection.next_product %}
+            <p>
+              {% if collection.previous_product %}
+              <span class="left">
+                {{ 'products.general.previous_product_html' | t | link_to: collection.previous_product }}
+              </span>
+              {% endif %}
+              {% if collection.next_product %}
+              <span class="right">
+                {{ 'products.general.next_product_html' | t | link_to: collection.next_product }}
+              </span>
+              {% endif %}
+            </p>
+            {% endif %}
+          {% endif %}
+
+        </div>
+      </div>
+      
+      <h1 class="frequently-bought-title">Frequently Bought Together</h1>
+      <div id="cbb-frequently-bought-box"></div>
+		
+      <div id="product_description" class="product-description rte" itemprop="description">
+        {% include 'product-description-tabs' %}
+      </div>
+      <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+    </div>
+    
+    <div class="product__item-details">
+      <div class="product__item_select-details clearfix">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+          <div class="price-wrapper">
+            <p class="visually-hidden">{{ 'products.general.regular_price' | t }}</p>
+            <p id="ProductPrice" class="h2 ProductPrice" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+              {{ current_variant.price | money }}
+            </p>
+
+            <h6 class="product-sale">
+              {% if on_sale %}
+              <strong>{{ 'products.product.on_sale' | t }}</strong>
+              {% endif %}
+            </h6>
+
+            {% if on_sale %}
+              <p class="visually-hidden">{{ 'products.general.regular_price' | t }}</p>
+              <p class="saved-price">Save: {{ current_variant.compare_at_price | minus: current_variant.price | divided_by: 100.00 | round | times: 100.00 | money_without_trailing_zeros }}</p>
+              <p id="ComparePrice" class="product_compare_at_price">Reg. {{ current_variant.compare_at_price | money }}</p>
+            {% endif %}
+
+            {% for item in product.tags %}
+              {% if item == 'free-shipping'%}
+              <div class="free-shipping-popup-container">
+                <a id="modal-free-shipping-toggle" href="#modal-free-shipping" class="free-shipping-popup-toggle">
+                  <strong>Free Shipping</strong>
+                  <small>See Details</small>
+                </a>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          
+          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+
+          <button type="submit" name="add" id="AddToCart" class="btn">
+            <p id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</p>
+          </button>
+          
+          <select name="id" id="productSelect" class="product-single__variants">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          
+          <!-- Product Swatch  -->
+          <div class="swatch-wrapper clearfix">
+            <h2 class="product__item-swatch-title">Select Options:</h2>
+            {% if product.variants.size > 1 %}
+              {% for option in product.options %}
+                  {% include 'swatch' with option %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </form>
+
+        <div class='follow-wishlist-wrapper'>
+          {% include 'followprice' %}
+          {% include 'wishlist-pro' %}
+        </div>
+        <div class='add-to-compare-wrapper text-center'>
+          {% include 'add-to-compare' with 'product' %}
+        </div>
+      </div>
+      
+      <div class="right__product-items-wrapper">
+      {% include 'related-product' %}
+      </div>
+    </div>
+    
+    {% include 'recently-viewed-products' %}
+    
+  </div>
+
+</div>
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+  var selectCallback = function(variant, selector) {
+    // BEGIN SWATCHES
+    if (variant) {
+      var form = jQuery('#' + selector.domIdPrefix).closest('form');
+      for (var i=0,length=variant.options.length; i<length; i++) {
+        var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+        if (radioButton.size()) {
+          radioButton.get(0).checked = true;
+        }
+      }
+      
+      $('.product-sku').text(variant.sku);
+      
+      //Available Check
+      if(variant.available){
+        // Availability with a 'In Stock' message
+        $('#product-variant-availability').html('<span class="text-success">In Stock</span>');
+      }else{
+        // Availability with a 'Out of Stock' message
+        $('#product-variant-availability').html('<span class="text-danger">Sold Out</span>');
+      }
+    }else{
+      $('.product-sku').empty();
+    }
+    // END SWATCHES
+    
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector
+    });
+  };
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>

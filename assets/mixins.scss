@@ -1,0 +1,280 @@
+$styles: margin padding;
+$position: top right bottom left tb lr;
+$gutters: 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100;
+
+@mixin config-mp() {
+  $style: 'margin';
+  $s: 'm';
+  $v: 'mt';
+  $prefix: 'top';
+
+  @each $style in $styles {
+
+    @if ($style == 'margin') {
+      $s: 'm';
+    } @else if ($style == 'padding') {
+      $s: 'p';
+    }
+
+    @each $prefix in $position {
+
+      @if ($prefix == 'top') {
+        $v: 't';
+      } @else if ($prefix == 'right') {
+        $v: 'r';
+      } @else if ($prefix == 'bottom') {
+        $v: 'b';
+      } @else if ($prefix == 'left') {
+        $v: 'l';
+      } @else if ($prefix == 'tb') {
+        $v: 'tb';
+      } @else if ($prefix == 'lr') {
+        $v: 'lr';
+      }
+
+      @each $i in $gutters {
+
+        .#{$s}#{$v}-#{$i} {
+
+          @if ($prefix == 'tb') {
+            #{$style}-top: #{$i}px !important;
+            #{$style}-bottom: #{$i}px !important;
+
+          } @else if ($prefix == 'lr') {
+            #{$style}-right: #{$i}px !important;
+            #{$style}-left: #{$i}px !important;
+
+          } @else {
+            #{$style}-#{$prefix}: #{$i}px !important;
+          }
+        }
+
+        @media (max-width: 749px) {
+          .#{$s}#{$v}-xs-#{$i} {
+            @if ($prefix == 'tb') {
+              #{$style}-top: #{$i}px !important;
+              #{$style}-bottom: #{$i}px !important;
+
+            } @else if ($prefix == 'lr') {
+              #{$style}-right: #{$i}px !important;
+              #{$style}-left: #{$i}px !important;
+
+            } @else {
+              #{$style}-#{$prefix}: #{$i}px !important;
+            }
+          }
+        }
+
+        @media (min-width: 750px) {
+          .#{$s}#{$v}-sm-#{$i} {
+            @if ($prefix == 'tb') {
+              #{$style}-top: #{$i}px !important;
+              #{$style}-bottom: #{$i}px !important;
+
+            } @else if ($prefix == 'lr') {
+              #{$style}-right: #{$i}px !important;
+              #{$style}-left: #{$i}px !important;
+
+            } @else {
+              #{$style}-#{$prefix}: #{$i}px !important;
+            }
+          }
+        }
+
+        @media (min-width: 990px) {
+          .#{$s}#{$v}-md-#{$i} {
+            @if ($prefix == 'tb') {
+              #{$style}-top: #{$i}px !important;
+              #{$style}-bottom: #{$i}px !important;
+
+            } @else if ($prefix == 'lr') {
+              #{$style}-right: #{$i}px !important;
+              #{$style}-left: #{$i}px !important;
+
+            } @else {
+              #{$style}-#{$prefix}: #{$i}px !important;
+            }
+          }
+        }
+
+        @media (min-width: 1400px) {
+          .#{$s}#{$v}-lg-#{$i} {
+            @if ($prefix == 'tb') {
+              #{$style}-top: #{$i}px !important;
+              #{$style}-bottom: #{$i}px !important;
+
+            } @else if ($prefix == 'lr') {
+              #{$style}-right: #{$i}px !important;
+              #{$style}-left: #{$i}px !important;
+
+            } @else {
+              #{$style}-#{$prefix}: #{$i}px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include config-mp();
+
+/* Alignment styles */
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.flex-between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.flex-around {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.flex-vc {
+	display: flex;
+	align-items: center;
+}
+
+.flex-hc {
+	display: flex;
+	justify-content: center;
+}
+
+.flex-hc-wrap {
+	display: flex;
+	justify-content: center;
+  	flex-wrap: wrap;
+}
+
+.flex-bl {
+	display: flex;
+	align-items: baseline;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+@media(max-width: 749px) { 
+	.flex-xs {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.flex-xs-vc {
+		display: flex;
+		align-items: center;
+	}
+
+	.flex-xs-hc {
+		display: flex;
+		justify-content: center;
+	}
+
+	.flex-xs-bl {
+		display: flex !important;
+		align-items: baseline;
+	}
+
+  .tc-xs {
+    text-align: center !important;
+  }
+
+  .tr-xs {
+    text-align: right !important;
+  }
+
+  .tl-xs {
+    text-align: left !important;
+  }
+  
+  .tj-xs {
+    text-align: justify !important;
+  }
+
+  .tw-xs {
+    white-space: nowrap !important;
+  }
+}
+
+@media(min-width: 750px) { 
+	.flex-sm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.flex-sm-vc {
+		display: flex;
+		align-items: center;
+	}
+
+	.flex-sm-hc {
+		display: flex;
+		justify-content: center;
+	}
+
+	.flex-sm-bl {
+		display: flex;
+		align-items: baseline;
+	}
+}
+
+@media(min-width: 990px) { 
+  .flex-md {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-md-vc {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-md-hc {
+    display: flex;
+    justify-content: center;
+  }
+
+  .flex-md-bl {
+    display: flex;
+    align-items: baseline;
+  }
+}
+
+.pdr-10p {
+  padding-right: 10%;
+}
+.pdl-10p {
+  padding-left: 10%;
+}
+
+@media(max-width: 480px) {
+  .pdl-xs-10p {
+    padding-left: 10%;
+  }
+}
+
+.normal {
+    font-style: normal;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.oblique {
+    font-style: oblique;
+}
+
+.pointer {
+  cursor: pointer;
+}

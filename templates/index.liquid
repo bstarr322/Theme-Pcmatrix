@@ -1,0 +1,53 @@
+<!-- /templates/index.liquid -->
+{% comment %}
+
+  This is the homepage of your site.
+
+  More info on global variables (available on all templates):
+    - http://docs.shopify.com/themes/liquid-variables/global
+{% endcomment %}
+
+<div class="wrapper">
+  <div class="left-sidebar">
+    {% if settings.use_offers_products %}
+    	{% include 'home-featured-offers' %}
+    {% endif %}
+
+    {% if settings.use_new_products %}
+    	{% include 'home-new-products' %}
+    {% endif %}
+    
+    {% if settings.use_featured_products %}
+    	{% include 'home-featured-products' %}
+    {% endif %}
+    
+    
+  </div>
+  <div class="right-sidebar">
+    {% if settings.use_brand_lists %}
+    	{% include 'section-brand-lists' %}
+    {% endif %}
+    {% if settings.use_best_sellers %}
+    	{% include 'section-best-sellers' %}
+    {% endif %}
+  </div>
+</div>
+
+
+<div  class="footer-ads">
+  <div class="wrapper">
+    
+    <hr>
+    
+    <h1>Expert Service. Unbeatable Price.</h1>
+    {% for i in (1..3) %}
+      {% capture ad_image %}footer_ad_{{i}}.png{% endcapture %}
+      {% capture ad_text %}footer_ad_{{i}}_text{% endcapture %}
+      {% capture ad_url %}footer_ad_{{i}}_url{% endcapture %}
+      <a href="{{ settings[ad_url] }}" class="footer-ads__col footer-ads__col--{% if forloop.first %}first{% elsif forloop.last %}last{% endif %} footer-ads__col--{{i}}">
+        <img src="{{ ad_image | asset_url }}" alt="" class="footer-ads__image">
+        <p class="footer-ads__text">{{ settings[ad_text] }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</div>

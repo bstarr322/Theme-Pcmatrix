@@ -1,0 +1,444 @@
+{% if link.title == 'Accessories' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_6_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_6].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_7_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_7].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_8_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_8].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_9_accessories_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_accessories_linklist_9].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/accessories">View All Accessories</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Computers' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_computers_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computers_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_computers_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computers_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_computers_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computers_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_computers_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computers_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_computers_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computers_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/computers">View All</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Electronics' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_6_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_6].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_7_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_7].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_8_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_8].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_9_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_9].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_10_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_10].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_11_electronics_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_electronics_linklist_11].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/electronics">View All Electronics</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Computer Parts' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_6_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_6].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_7_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_7].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_8_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_8].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_9_computer_parts_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_computer_parts_linklist_9].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/computer-parts">View All Computer Parts</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Networking' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_networking_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_networking_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_networking_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_networking_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_networking_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_networking_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_networking_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_networking_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_networking_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_networking_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/networking">View All Networking Products</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Software & Gaming' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_2].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_3].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_4_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_4].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_5_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_5].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_6_software_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_software_linklist_6].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/software-gaming">View All Products</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% if link.title == 'Unbranded' %}
+<div class="main-nav-item-body" style="top: 320px;">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_unbranded_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_unbranded_linklist_1].links %}
+        <li class="sub-nav-item"><a href="{{ item-link.url }}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>Explore All Categories</h4>
+    <ul>
+      <li class="sub-nav-item"><a href="/collections/unbranded">View All Unbranded</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,30 @@
+<div class="featured__products-title">
+  <h2>{{ 'homepage.sections.new_products_title' | t }}</h2>
+</div>
+<div class="collection-wrapper new__products-wrapper">
+  {% if settings.new_products_collection != blank and collections[settings.new_products_collection].handle == settings.new_products_collection and collections[settings.new_products_collection].products_count > 0 %}
+  <div class="new__products-content clearfix">
+    {% for product in collections[settings.new_products_collection].products | limit: 8 %}
+    {% include 'product-grid-item' %}
+    {% endfor %}
+  </div>
+  {% elsif collections.[settings.new_products_collection].handle == 'frontpage' and collections.frontpage.products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_frontpage_products_html' | t }}</p>
+  </div>
+  {% elsif settings.new_products_collection != blank and collections[settings.new_products_collection].handle != 'frontpage' and collections[settings.new_products_collection].products_count < 1 %}
+  <div>
+    <p>{{ 'homepage.sections.no_products_html' | t }}</p>
+  </div>
+  {% else %}
+  <div>
+    <p>{{ 'homepage.sections.no_featured' | t }}</p>
+  </div>
+  {% endif %}
+  <div class="featured__product-view clearfix hide">
+    <a href="/collections/{{ settings.new_products_collection }}">
+      View More
+      {% include 'icon-arrow-right' %}
+    </a>
+  </div>
+</div>

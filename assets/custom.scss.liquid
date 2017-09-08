@@ -1,0 +1,107 @@
+
+/*==============================================================================
+	Product Detail Page
+==============================================================================*/
+/* Product Description Tab */
+.product-description {
+  margin-top: 30px;
+  
+  tr td:first-child {
+    background-color: #f1f1f1;
+  }
+  
+  .warranty_content {
+    margin: 0 -10px -20px -10px;
+    
+    .rn-boxContent-title {
+      padding: 0 20px;
+      background: #32425b;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 30px;
+      width: 100%;
+      display: block;
+    }
+    
+    .column {
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 20px 20px 20px 40px;
+      width: 45%;
+      vertical-align: top;
+      
+      @media (max-width: 991px) {
+        padding: initial;
+      }
+      
+      .quick-info {
+        box-sizing: border-box;
+        vertical-align: top;
+        min-height: 150px;
+      }
+      
+      a {
+        @media (max-width: 480px) {
+          font-size: 14px !important;
+          padding: initial !important;
+        }
+      }
+    }
+    
+    .rn-boxContent-2colInfo-title {
+      margin: 25px 0 5px 0;
+      font-weight: 700;
+      margin-bottom: .5em;
+    }
+  }
+}
+
+/* Frequently Bought Together */
+.frequently-bought-title {
+  background-color: #fff;
+  font-size: 1.5rem;
+  font-weight: initial;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  border-radius: 3px;
+  padding: 10px !important;
+  margin: initial;
+  display: inline-block;
+}
+
+.cbb-frequently-bought-container {
+  margin-top: -3px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 10px !important;
+  
+  .cbb-frequently-bought-title {
+    display: none;
+  }
+  .cbb-frequently-bought-products {
+    max-width: 100% !important;
+  }
+  .cbb-frequently-bought-selector-label-description {
+    display: none;
+  }
+}
+
+/* Magnic Popup Styles */
+.zoomLens {
+  width: 150px !important;
+  height: 150px !important;
+  background: url({{'tile.gif' | asset_img_url : 'master' }});
+  border: initial !important;
+  background-size: contain;
+  background-color: initial !important;
+}
+
+.mfp-counter {
+  display: none;
+}
+
+.zoomWindow {
+    left: 497px !important;
+    top: -87px !important;
+}
