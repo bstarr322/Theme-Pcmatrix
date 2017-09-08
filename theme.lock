@@ -138,7 +138,7 @@ assets/logo.png:
 assets/magnic-popup.css:
   development: 2017-09-02T11:57:47-04:00   6eff092d9de3346720ff49849ee9003a
 assets/mixins.scss:
-  development: 2017-09-08T14:06:04-04:00   64fca65470500f9c2be2c3db3212a165
+  development: 2017-09-08T14:35:19-04:00   038f8707e1108435839cd47b3c71905d
 assets/modernizr.min.js:
   development: 2017-07-20T17:12:01-04:00   dc21cffad945a84cbbe770d52b1a0ded
 assets/owl.carousel.css:
@@ -194,7 +194,7 @@ assets/tile.gif:
 assets/timber.js.liquid:
   development: 2017-09-01T11:09:51-04:00   519738ee269c21476702580b712a53a6
 assets/timber.scss.liquid:
-  development: 2017-09-08T14:06:29-04:00   57cd2bc6f8d0087f5c4562c0397a28aa
+  development: 2017-09-08T14:37:54-04:00   efc1ef33f201016a3d88ac4774cbd2d1
 assets/vendors.js:
   development: 2017-09-02T11:56:55-04:00   032d17cd2dcc5d608bc5d1fb30a2dbfd
 config/settings_data.json:
@@ -236,13 +236,13 @@ snippets/followprice.liquid:
 snippets/header-side-category.liquid:
   development: 2017-08-08T17:27:26-04:00   a2d7584d3e298d542cbeb6934d40c1f0
 snippets/home-featured-offers.liquid:
-  development: 2017-09-08T14:06:34-04:00   b6a56a7c6340b87d5c3e1d4713341301
+  development: 2017-09-08T14:37:55-04:00   0dea81db8ab9c8bc96c006de9cc62207
 snippets/home-featured-products.liquid:
-  development: 2017-09-08T14:06:57-04:00   91fd9f3ef5a6e122db8d057f7ab57ca2
+  development: 2017-09-08T14:37:57-04:00   f2cd5a10f7f77c5846047433cea5b412
 snippets/home-hero.liquid:
   development: 2017-09-06T13:37:14-04:00   5531096b45dce053d5fb511d01348ba8
 snippets/home-new-products.liquid:
-  development: 2017-09-08T14:07:03-04:00   90c02c96b80abd86b04192a597bd7be6
+  development: 2017-09-08T14:37:59-04:00   10c08ef80683e09c6c54ed328145fc69
 snippets/icon-arrow-right.liquid:
   development: 2017-08-02T14:37:33-04:00   44b5223f36d424d437eafb3a5b7bb97f
 snippets/icon-cart.liquid:
