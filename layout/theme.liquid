@@ -267,7 +267,7 @@
     </nav>
     
     {% if template contains 'index' %}
-	    {% include 'home-hero' %}
+      {% include 'home-hero' %}
     {% endif %}
 
     <main class="main-content{% if template contains 'collection' %} collection-wrapper{% endif %}{% if template contains 'product' %} product-main-content{% endif %}" role="main">
@@ -275,137 +275,11 @@
       {{ content_for_layout }}
 
     </main>
-    
-    <div class="footer__singup-form clearfix">
-      <div class="wrapper">
-        {% if settings.footer_newsletter_enable %}
-        <div class="signup-form-wrapper">
-          <h4>Get the Latest Deals & More</h4>
-          {% if settings.newsletter_form_action != blank %}
-            <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
-              <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-              <span class="input-group-btn">
-                <input type="submit" class="btn" name="subscribe" id="subscribe" value="Sign Up">
-              </span>
-            </form>
-          {% else %}
-            {% form 'customer' %}
-              {{ form.errors | default_errors }}
-              {% if form.posted_successfully? %}
-                <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
-              {% else %}
-                <div class="input-group">
-                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-                  <input type="hidden" name="contact[tags]" value="newsletter">
-                  <span class="input-group-btn">
-                    <input type="submit" class="btn" name="subscribe" id="subscribe" value="Sign Up">
-                  </span>
-                </div>
-              {% endif %}
-            {% endform %}
-          {% endif %}
 
-        </div>
-        {% endif %}
-      </div>
-    </div>
+    {% include 'footer-signup-form' %}
 
-    <!-- begin site-footer -->
-    <footer class="site-footer" role="contentinfo">
-      <div class="wrapper">
-        <div class="grid">
-          <div class="grid__item large--one-quarter medium--one-half footer-block">
-            <h4>{{ settings.footer_1_heading }}</h4>
-            {% if settings.footer_linklist_1 != '' %}
-              <ul>
-                {% for link in linklists[settings.footer_linklist_1].links %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <div class="desc">
-                {{ settings.footer_1_text }}
-              </div>
-            {% endif %}
-          </div>
-          <div class="grid__item large--one-quarter medium--one-half footer-block">
-            <h4>{{ settings.footer_2_heading }}</h4>
-            {% if settings.footer_linklist_2 != '' %}
-              <ul>
-                {% for link in linklists[settings.footer_linklist_2].links %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <div class="desc">
-                {{ settings.footer_2_text }}
-              </div>
-            {% endif %}
-          </div>
-          <div class="grid__item large--one-quarter medium--one-half footer-block">
-            <h4>{{ settings.footer_3_heading }}</h4>
-            {% if settings.footer_linklist_3 != '' %}
-              <ul>
-                {% for link in linklists[settings.footer_linklist_3].links %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {% endfor %}
-              </ul>
-            {% else %}
-              <div class="desc">
-                {{ settings.footer_3_text }}
-              </div>
-            {% endif %}
-          </div>
-          <div class="grid__item large--one-quarter medium--one-half footer-block footer__contact-wrapper">
-            <h4>Contact Us</h4>
-            <ul class="site-footer__linklist footer-content">
-              <li><a href="#">{% include 'icon-location' %}<span>33717 Woodward Ave, Suite 529, Birmingham MI 48009</span></a></li>
-              <li><a href="tel:+1-866.394.3919">{% include 'icon__user-info' %}<span>1.866.394.3919</span></a></li>
-              <li><a target="_blank" href="/pages/contact-us">{% include 'icon-email' %}<span>Email Us</span></a></li>
-            </ul>
-          </div>
-          <div class="grid__item text-center">
-            <hr>
-          </div>
-          <div class="grid__item footer__store-wrapper">
-            {% comment %}
-              Loop through available payment methods and show their icons.
-            {% endcomment %}
-            {% if settings.footer_social_enable %}
-            <div class="grid__item large--one-third medium--one-half footer__store-social">
-              {% include 'social-profiles' %}
-            </div>
-            {% endif %}
-            
-            <div class="grid__item large--one-third medium--one-half footer__store-content">
-              <img src="{{ 'store.png' | asset_url }}">
-            </div>
-            
-            <div class="grid__item large--one-third medium--one-half footer__store-payment">
-              {% comment %}
-                Loop through available payment methods and show their icons.
-              {% endcomment %}
-              {% unless shop.enabled_payment_types == empty %}
-                {% assign payment_icons_available = 'amazon_payments,american_express,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
-                <ul class="inline-list payment-icons">
-                  {% for type in shop.enabled_payment_types %}
-                    {% capture payment_type_img %}cc-{{type}}@2x.png{% endcapture %}
-                    <li class="payment-{{type}}"><img src="{{ payment_type_img | asset_url }}" alt="{{ type | replace: '_', ' ' }}" width="48" height="34"></li>
-                  {% endfor %}
-                </ul>
-              {% endunless %}
-            </div>
-          </div>
-          <div class="grid__item text-center">
-            <hr>
-            <p class="footer__shop-copyright">
-              Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- //site-footer -->
+    {% include 'footer' %}
+
   </div>
 
   {{ 'vendors.js' | asset_url | script_tag }}
