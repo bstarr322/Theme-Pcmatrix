@@ -189,36 +189,34 @@
             {% endif %}
           </div>
           <div class="grid__item large--three-quarters large--text-right medium-down--hide site__header-nav">
-            <div class="medium-down--hide">
-              <ul>
-                <li class="header__user-account">
-                  {% if customer %}
-                    {% if customer.first_name != blank %}
-                      {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                      {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-                    {% else %}
-                      <a href="/account">{{ 'layout.customer.account' | t }}</a>
-                    {% endif %}
-                    or {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            <ul>
+              <li class="header__user-account">
+                {% if customer %}
+                  {% if customer.first_name != blank %}
+                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
                   {% else %}
-                    {{ 'layout.customer.log_in' | t | customer_login_link }}
-                    or {{ 'layout.customer.create_account' | t | customer_register_link }}
+                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
                   {% endif %}
-                </li>
-                <li class="nav__cart-icon">
-                  <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-                    {% include 'icon-cart' %}
-                    <span id="CartCount">{{ cart.item_count }}</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Wish List</a>
-                </li>
-                <li>
-                  <a href="#">Customer Service</a>
-                </li>
-              </ul>
-            </div>
+                  or {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                {% else %}
+                  {{ 'layout.customer.log_in' | t | customer_login_link }}
+                  or {{ 'layout.customer.create_account' | t | customer_register_link }}
+                {% endif %}
+              </li>
+              <li class="nav__cart-icon">
+                <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+                  {% include 'icon-cart' %}
+                  <span id="CartCount">{{ cart.item_count }}</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">Wish List</a>
+              </li>
+              <li>
+                <a href="#">Customer Service</a>
+              </li>
+            </ul>
           </div>
         </div>
 

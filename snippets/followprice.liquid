@@ -12,21 +12,25 @@
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  
+
   .fp-btn,
   .fp-followed .fp-btn {
     background-color: #fff;
   }
   
+  .fp-btn:hover, .fp-button.fp-hover .fp-btn {
+    background-color: initial;
+  }
+
   .fp-followed .fp-follow-logo img,
   .fp-btn .fp-follow-logo img {
     display: none !important;
   }
   
   .fp-followed .fp-btn .fp-btn-text,
-  .fp-unfollowed-text {
+  .fp-btn .fp-unfollowed-text {
     color: #333 !important;
-    display: flex !important;
+    display: flex;
     align-items: center;
     font-weight: bold;
   }

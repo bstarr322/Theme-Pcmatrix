@@ -45,7 +45,7 @@ $('.product_gallery ul li')'s href, title attribute is used to set an image url,
       <ul class="slides">
         {% for image in product.images %}
         <li>
-          <img src="{{ image | product_img_url: 'master' }}"/>
+          <img src="{{ image | product_img_url: '150x150' }}"/>
         </li>
         {% endfor %}
       </ul>
