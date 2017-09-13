@@ -38,35 +38,6 @@ jQuery(function ($) {
 
 
 $( document ).ready(function() {
-  // HOME PAGE
-  // Homepage Banner Slides
-
-   $('.home-flexslider').flexslider({
-     animation: "slide"
-   });
-
-   $('.collection__banner-slider').flexslider({
-     animation: "slide"
-   });
-
-   // Home Page Owl Carousel
-   $('.owl-carousel').owlCarousel({
-     loop:true,
-     margin:10,
-     nav:true,
-     navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-     responsive:{
-       0:{
-         items:1
-       },
-       992:{
-         items:2
-       },
-       1024:{
-         items:3
-       }
-     }
-   });
 
 
    // Enable elevate zoom when leave menu-item.
@@ -138,56 +109,4 @@ $( document ).ready(function() {
      }
    });
 
-
-   /* PRODUCT PAGE */
-   //  FLEXSLIDER
-   $('#carousel').flexslider({
-     animation: "slide",
-     controlNav: false,
-     animationLoop: true,
-     slideshow: false,
-     itemWidth: 80,
-     itemMargin: 5,
-     asNavFor: '.product_images'
-   });
-
-   $('.product_images').flexslider({
-     startAt: parseInt($('.featured_image', $(this)).data('index'), 10),
-     touch: false,
-     pauseOnHover: true,
-     directionNav: true,
-     animation: "slide",
-     slideshow: false,
-     slideshowSpeed: 10*1000
-   });
-
-   $('.swatch-element > input[type=radio][data-title]').on('change', function () {
-     $(this).parents('.product-form__item--swatch').find('.product-form__swatch-title .selected-variant__title').html($(this).data('title'));
-   });
-
-
-   // Enable ElevateZoom
-   $('.product_gallery .flex-active-slide img').elevateZoom({
-     'zoomWindowWidth': 800,
-     'zoomWindowHeight': 700
-   });
-
-   // Enable Magnic Popup, it will be worked after flex slider is initialized.
-   $('.product_gallery ul.slides').magnificPopup({
-     delegate: 'li',
-     type: 'image',
-     tLoading: 'Loading image #%curr%...',
-     mainClass: 'mfp-img-mobile',
-     gallery: {
-       enabled: true,
-       navigateByImgClick: true,
-       preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-     },
-     image: {
-       tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-       titleSrc: function(item) {
-         return item.el.attr('title');
-       }
-     }
-   });
  });

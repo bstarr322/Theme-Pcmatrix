@@ -191,31 +191,7 @@
 {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 <script>
   var selectCallback = function(variant, selector) {
-    // BEGIN SWATCHES
-    if (variant) {
-      var form = jQuery('#' + selector.domIdPrefix).closest('form');
-      for (var i=0,length=variant.options.length; i<length; i++) {
-        var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
-        if (radioButton.size()) {
-          radioButton.get(0).checked = true;
-        }
-      }
-      
-      $('.product-sku').text(variant.sku);
-      
-      //Available Check
-      if(variant.available){
-        // Availability with a 'In Stock' message
-        $('#product-variant-availability').html('<span class="text-success">In Stock</span>');
-      }else{
-        // Availability with a 'Out of Stock' message
-        $('#product-variant-availability').html('<span class="text-danger">Sold Out</span>');
-      }
-    }else{
-      $('.product-sku').empty();
-    }
-    // END SWATCHES
-    
+
     timber.productPage({
       money_format: "{{ shop.money_format }}",
       variant: variant,
@@ -239,5 +215,9 @@
     {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
       $('.selector-wrapper').hide();
     {% endif %}
+
+    $('.swatch-element > input[type=radio][data-title]').on('change', function () {
+      $(this).parents('.product-form__item--swatch').find('.product-form__swatch-title .selected-variant__title').html($(this).data('title'));
+    });
   });
 </script>

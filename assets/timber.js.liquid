@@ -74,12 +74,19 @@ timber.cacheSelectors = function () {
     $navigation              : $('#AccessibleNav'),
     $mobileSubNavToggle      : $('.mobile-nav__toggle'),
 
+    // Home Page
+    $heroMainSlider          : $('.hero-mainslider'),
+    $owlCarousel             : $('.owl-carousel'),
+
     // Collection Pages
     $changeView              : $('.change-view'),
+    $collectionBannerSlider  : $('.collection__banner-slider'),
 
     // Product Page
     $productImage            : $('#ProductPhotoImg'),
     $thumbImages             : $('#ProductThumbs').find('a.product-single__thumbnail'),
+    $pMainGalleryWrapper     : $('.product_gallery'),
+    $pThumbGalleryWrapper    : $('.product_thumbs'),
 
     // Customer Pages
     $recoverPasswordLink     : $('#RecoverPassword'),
@@ -100,6 +107,8 @@ timber.init = function () {
   timber.responsiveVideos();
   timber.collectionViews();
   timber.loginForms();
+  timber.homePageEvents();
+  timber.productPageEvents();
 };
 
 timber.accessibleNav = function () {
@@ -206,15 +215,25 @@ timber.productPage = function (options) {
       selector = options.selector;
 
   // Selectors
-  var $productImage = $('#ProductPhotoImg'),
-      $addToCart = $('#AddToCart'),
-      $productPrice = $('#ProductPrice'),
-      $comparePrice = $('#ComparePrice'),
-      $savedPrice	= $('.saved-price'),
+  var $productImage   = $('#ProductPhotoImg'),
+      $addToCart      = $('#AddToCart'),
+      $productPrice   = $('#ProductPrice'),
+      $comparePrice   = $('#ComparePrice'),
+      $savedPrice	    = $('.saved-price'),
       $quantityElements = $('.quantity-selector, label + .js-qty'),
-      $addToCartText = $('#AddToCartText');
+      $addToCartText  = $('#AddToCartText'),
+      $productSku     = $('.product-sku'),
+      $variantAVSelector = $('#product-variant-availability');
 
   if (variant) {
+
+    var form = jQuery('#' + selector.domIdPrefix).closest('form');
+    for (var i=0,length=variant.options.length; i<length; i++) {
+      var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+      if (radioButton.size()) {
+        radioButton.get(0).checked = true;
+      }
+    }
 
     // Update variant image, if one is set
     if (variant.featured_image) {
@@ -223,17 +242,23 @@ timber.productPage = function (options) {
       Shopify.Image.switchImage(newImg, el, timber.switchImage);
     }
 
+    // Update SKU
+    $productSku.text(variant.sku);
+
     // Select a valid variant if available
     if (variant.available) {
       // Available, enable the submit button, change text, show quantity elements
       $addToCart.removeClass('disabled').prop('disabled', false);
       $addToCartText.html({{ 'products.product.add_to_cart' | t | json }});
       $quantityElements.show();
+      $variantAVSelector.html('<span class="text-success">In Stock</span>');
+
     } else {
       // Sold out, disable the submit button, change text, hide quantity elements
       $addToCart.addClass('disabled').prop('disabled', true);
       $addToCartText.html({{ 'products.product.sold_out' | t | json }});
       $quantityElements.hide();
+      $variantAVSelector.html('<span class="text-danger">Sold Out</span>');
     }
 
     // Regardless of stock, update the product price
@@ -260,6 +285,8 @@ timber.productPage = function (options) {
     $addToCart.addClass('disabled').prop('disabled', true);
     $addToCartText.html({{ 'products.product.unavailable' | t | json }});
     $quantityElements.hide();
+
+    $productSku.empty();
   }
 };
 
@@ -313,6 +340,10 @@ timber.collectionViews = function () {
       }
     });
   }
+
+  timber.cache.$collectionBannerSlider.flexslider({
+    animation: "slide"
+  });
 };
 
 timber.loginForms = function() {
@@ -344,6 +375,93 @@ timber.loginForms = function() {
 
 timber.resetPasswordSuccess = function() {
   timber.cache.$passwordResetSuccess.show();
+};
+
+// Custom Events;
+
+timber.homePageEvents = function() {
+  timber.cache.$heroMainSlider.flexslider({
+    animation: "slide"
+  });
+
+  timber.cache.$owlCarousel.owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    navText : ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+    responsive:{
+      0:{
+        items:1
+      },
+      992:{
+        items:2
+      },
+      1024:{
+        items:3
+      }
+    }
+  });
+};
+
+// Product Page other features not for selectcallback of Swatch.
+timber.productPageEvents = function() {
+
+  // Product Thumbs
+  timber.cache.$pThumbGalleryWrapper.flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: true,
+    slideshow: false,
+    itemWidth: 80,
+    itemMargin: 5,
+    asNavFor: '.product_gallery',
+    start: function(slider) {
+      timber.cache.$pThumbGalleryWrapper.find('.slides li img').click(function(event){
+        event.preventDefault();
+        timber.cache.$pMainGalleryWrapper.find('.flex-active-slide img').elevateZoom({
+          'zoomWindowWidth': 800,
+          'zoomWindowHeight': 700
+        });
+      });
+    }
+  });
+
+  // Product Main Slider
+  timber.cache.$pMainGalleryWrapper.flexslider({
+    startAt: parseInt($('.featured_image', $(this)).data('index'), 10),
+    touch: false,
+    pauseOnHover: true,
+    directionNav: true,
+    animation: "slide",
+    slideshow: false,
+    slideshowSpeed: 10*1000
+  });
+
+  timber.cache.$pMainGalleryWrapper.find('.flex-active-slide img').elevateZoom({
+    'zoomWindowWidth': 800,
+    'zoomWindowHeight': 700
+  });
+
+   // Enable Magnic Popup, it will be worked after flex slider is initialized.
+  timber.cache.$pMainGalleryWrapper.find('ul.slides').magnificPopup({
+    delegate: 'li',
+    type: 'image',
+    tLoading: 'Loading image #%curr%...',
+    mainClass: 'mfp-img-mobile',
+    gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+    image: {
+      tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+      titleSrc: function(item) {
+        return item.el.attr('title');
+      }
+    }
+  });
+
+
 };
 
 /*============================================================================
