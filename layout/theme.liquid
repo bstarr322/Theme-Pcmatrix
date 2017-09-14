@@ -32,8 +32,7 @@
 
   <!-- CSS ================================================== -->
   {{ 'mixins.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'swatch.css' | asset_url | stylesheet_tag }}
+  {{ 'swiper.min.css' | asset_url | stylesheet_tag }}
   {{ 'magnic-popup.css' | asset_url | stylesheet_tag }}
   {{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
   {{ 'owl.theme.default.css' | asset_url | stylesheet_tag }}
@@ -42,8 +41,9 @@
     {{ 'flexslider.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
-  {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
-  
+  {{ 'swatch.css' | asset_url | stylesheet_tag }}
+  {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
   {% include 'oldIE-js' %}
@@ -225,19 +225,21 @@
 
     <nav class="nav-bar" role="navigation">
       <div class="wrapper">
-        <div class="category_box" id="categorybox" role="categorybox">
-          {% include 'icon-hamburger' %}
-          <span class="category_title">Categories</span>
-              
-          {% unless template contains 'index' %}
-          <div class="site__categories-toggle">
-            {% include 'header-side-category' %}
+        <div class="medium-down--hide">
+          <div class="category_box" id="categorybox" role="categorybox">
+            {% include 'icon-hamburger' %}
+            <span class="category_title">Categories</span>
+                
+            {% unless template contains 'index' %}
+            <div class="site__categories-toggle">
+              {% include 'header-side-category' %}
+            </div>
+            {% endunless %}
           </div>
-          {% endunless %}
-        </div>
-       
-        <div class="site-header__search">
-          {% include 'search-bar' %}
+         
+          <div class="site-header__search">
+            {% include 'search-bar' %}
+          </div>
         </div>
         <div class="large--hide medium-down--show">
           <div class="grid">
@@ -281,6 +283,7 @@
   </div>
 
   {{ 'vendors.js' | asset_url | script_tag }}
+  {{ 'swiper.min.js' | asset_url | script_tag }}
   {{ 'owl.carousel.js' | asset_url | script_tag }}
   {{ 'timber.js' | asset_url | script_tag }}
   {{ 'theme.js' | asset_url | script_tag }}
@@ -288,6 +291,7 @@
   {% comment %}
     Template-specific js
   {% endcomment %}
+
   <script>
     {% if resetPassword %}
       $(function() {
@@ -301,6 +305,7 @@
     Documentation:
       - http://shopify.com/timber#ajax-cart
   {% endcomment %}
+
   {% if settings.ajax_cart_method == "drawer" %}
     {{ 'handlebars.min.js' | asset_url | script_tag }}
     {% include 'ajax-cart-template' %}

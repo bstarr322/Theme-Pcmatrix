@@ -380,8 +380,21 @@ timber.resetPasswordSuccess = function() {
 // Custom Events;
 
 timber.homePageEvents = function() {
-  timber.cache.$heroMainSlider.flexslider({
-    animation: "slide"
+
+  var autoPlayTimeDif = 6000;
+  var loopflag = true;
+  var swiperSlideCount = jQuery(".hero-mainslider .swiper-slide").length;
+  if (swiperSlideCount == 1) {
+      loopflag = false;
+  }
+  new Swiper('.swiper-container', {
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      loop: true,
+      paginationClickable: true,
+      centeredSlides: true,
+      autoplay: 5000,
+      autoplayDisableOnInteraction: false
   });
 
   timber.cache.$owlCarousel.owlCarousel({
