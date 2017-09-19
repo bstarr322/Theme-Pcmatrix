@@ -8,7 +8,7 @@
 <div class="featured__offers-wrapper">
   {% if settings.offers_collection != blank and collections[settings.offers_collection].handle == settings.offers_collection and collections[settings.offers_collection].products_count > 0 %}
   <div class="featured__offers-content owl-carousel clearfix">
-    {% for product in collections[settings.offers_collection].products | limit: 3 %}
+    {% for product in collections[settings.offers_collection].products | limit: 9 %}
     {% include 'product-offer-loop' %}
     {% endfor %}
   </div>

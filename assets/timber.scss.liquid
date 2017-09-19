@@ -1999,11 +1999,11 @@ label.error {
         
         .is_active {
           .main-nav-item-link {
-            color: #E29012;
+            color: #25aef5;
           }
           
           .fa-chevron-right {
-            color: #E29012 !important;
+            color: #25aef5 !important;
           }
           
           .main-nav-item-body {
@@ -2055,7 +2055,7 @@ label.error {
               }
               
               a:hover {
-                color: #e29012;
+                color: #25aef5;
                 text-decoration: underline;
               }
             }
@@ -2087,22 +2087,6 @@ label.error {
         height: 260px;
         padding-left: initial;
         margin-top: $gutter/2;
-      }
-    }
-    
-    .hero-mainslider {
-      position: relative;
-      font-size: 0;
-      
-      img {
-        width: 100%;
-        max-height: 360px;
-        min-height: 280px;
-        object-fit: cover;
-        
-        @include at-query ($max, $preMedium) {
-          min-height: 130px;
-        }
       }
     }
     
@@ -2223,11 +2207,11 @@ label.error {
 
     .is_active {
       a {
-        color: #E29012;
+        color: #25aef5;
       }
 
       .fa-chevron-right {
-        color: #E29012 !important;
+        color: #25aef5 !important;
       }
 
       .main-nav-item-body {
@@ -4681,10 +4665,14 @@ label.error {
   }
 }
 .owl-item {
-  border-right: 1px solid #eee;
+  // border-right: 1px solid #eee;
 
-  &.active:nth-child(3n+1) {
-    border-right: initial;
+  // &.active:nth-child(3n+1) {
+  //   border-right: initial;
+  // }
+
+  img {
+    object-fit: contain;
   }
 }
 
@@ -4893,8 +4881,8 @@ label.error {
 }
 
 .zoomWindow {
-    left: 497px !important;
-    top: -87px !important;
+  left: 497px !important;
+  top: -87px !important;
 }
 
 // Home Page Hero Slider
@@ -4908,6 +4896,10 @@ label.error {
     content: "";
     display: table;
     clear: both;
+  }
+
+  @include at-query ($max, $preMedium) {
+    min-height: 130px;
   }
 }
 
@@ -4935,6 +4927,17 @@ label.error {
     height: 100%;
     overflow: hidden;
     text-align: center;
+
+    img {
+      width: 100%;
+      max-height: 360px;
+      min-height: 280px;
+      object-fit: cover;
+
+      @include at-query ($max, $preMedium) {
+        min-height: 130px;
+      }
+    }
   }
 }
 
