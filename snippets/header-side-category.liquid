@@ -1,8 +1,10 @@
 <ul class="site-cat" id="SiteCat">
   {% for link in linklists.categories.links %}
     {%- assign child_list_handle = link.title | handleize -%}
-    <li class="main-nav-item"{% if link.active %}class="site-cat--active"{% endif %}>
-      <a href="{{ link.url }}" class="main-nav-item-link">
+    {% assign product_counts = collections[child_list_handle].all_products_count | plus: 0 %}
+
+    <li class="main-nav-item{% if link.active %} site-cat--active{% endif %}">
+      <a href="{{ link.url }}" class="main-nav-item-link{% if product_counts > 0 %} has-products{% endif %}">
         {{ link.title }}
         {% unless link.title == 'Scanners' or link.title == 'Barcode Printers' %}
           <i class="fa fa-chevron-right"></i>

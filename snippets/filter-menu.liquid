@@ -80,7 +80,7 @@
                           {%- if current_tags contains menu_item -%}
                               {{ '<i class="check-icon"></i> ' | append: filter_collection.title | link_to_remove_tag: menu_item }}<span class="collection-count">({{ filter_collection.all_products_count }})</span>
                           {%- elsif current_collection_handle == menu_item -%}
-                              <a href="/collections/all" title="{{ filter_collection.title | escape }}"><i class="check-icon"></i> {{ filter_collection.title | escape }}</a><span class="collection-count">({{ filter_collection.all_products_count }})</span>
+                              <a class="hide" href="/collections/all" title="{{ filter_collection.title | escape }}"><i class="check-icon"></i> {{ filter_collection.title | escape }}</a><span class="collection-count hide">({{ filter_collection.all_products_count }})</span>
                               <a href="/collections/{{ menu_item }}" title="{{ filter_collection.title | escape }}"><i class="check-icon"></i> {{ filter_collection.title | escape }}</a><span class="collection-count">({{ filter_collection.all_products_count }})</span>
                           {%- else -%}
                               {{ '<i class="check-icon"></i> ' | append: filter_collection.title | link_to_tag: menu_item }}<span class="collection-count">({{ filter_collection.all_products_count }})</span>
