@@ -2145,7 +2145,7 @@ label.error {
   display: none;
   top: 0;
   left: 200px;
-  width: 746px;
+  width: 1000px;
   background: #fff;
   border-radius: 0 2px 2px 0;
   border: 1px solid #f2f2f2;
@@ -2156,7 +2156,7 @@ label.error {
   z-index: 11;
 
   .nav-row {
-    width: 161px;
+    width: 215px;
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -2180,6 +2180,29 @@ label.error {
       a {
         color: #4d4d4d;
       }
+    }
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 1365px) {
+    width: 750px;
+    .nav-row:nth-child(4n+1) {
+      clear: initial;
+    }
+    .nav-row:nth-child(3n+1) {
+      clear: both;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 500px;
+    .nav-row:nth-child(4n+1) {
+      clear: initial;
+    }
+    .nav-row:nth-child(3n+1) {
+      clear: initial;
+    }
+    .nav-row:nth-child(2n+1) {
+      clear: both;
     }
   }
 }

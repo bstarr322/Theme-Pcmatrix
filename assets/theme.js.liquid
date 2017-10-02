@@ -55,10 +55,10 @@ $( document ).ready(function() {
      $('.zoomContainer').remove();
      
      $( this ).addClass( "is_active" );
-   });
-
-   $('.main-nav-item').on("mouseleave", function(){
+   }).on("mouseleave", function(){
      $( this ).removeClass( "is_active" );
+   }).on("click", function(){
+     $( this ).toggleClass( "is_active" );
    });
 
    $('ul.tabs').each(function(){
