@@ -40,23 +40,31 @@ jQuery(function ($) {
 $( document ).ready(function() {
 
 
-   // Enable elevate zoom when leave menu-item.
-   $('.site__categories-toggle').on('mouseleave', function(){
-     $('.product_gallery .flex-active-slide img').elevateZoom({
-       'zoomWindowWidth': 800,
-       'zoomWindowHeight': 700
-     });
-   });
+  // Enable elevate zoom when leave menu-item.
+  $('.site__categories-toggle').on('mouseleave', function(){
+    $('.product_gallery .flex-active-slide img').elevateZoom({
+      'zoomWindowWidth': 800,
+      'zoomWindowHeight': 700
+    });
+  });
    
-   // Header Category 
-   $('.main-nav-item').on("mouseenter", function(){
-     // Disable elevate zoom when hover menu-item.
-     $.removeData($('img'), 'elevateZoom');
-     $('.zoomContainer').remove();
-     
-     $( this ).addClass( "is_active" );
+  // Header Category 
+  var timerMainItem;
+  $('.main-nav-item').on("mouseenter", function(){
+    var _this = this;
+  
+    // Disable elevate zoom when hover menu-item.
+    $.removeData($('img'), 'elevateZoom');
+    $('.zoomContainer').remove();
+
+    timerMainItem = setTimeout(function() {
+      $('.main-nav-item').removeClass( "is_active" );
+      $( _this ).addClass( "is_active" );
+    }, 500);
+
    }).on("mouseleave", function(){
-     $( this ).removeClass( "is_active" );
+     clearTimeout(timerMainItem);
+
    }).on("click", function(){
      $( this ).toggleClass( "is_active" );
    });
