@@ -227,9 +227,10 @@
       <div class="wrapper">
         <div class="medium-down--hide">
           <div class="category_box" id="categorybox" role="categorybox">
-            {% include 'icon-hamburger' %}
-            <span class="category_title">Categories</span>
-                
+            <div class="btn-category_box">
+              {% include 'icon-hamburger' %}
+              <span class="category_title">Categories</span>
+            </div>
             {% unless template contains 'index' %}
             <div class="site__categories-toggle">
               {% include 'header-side-category' %}

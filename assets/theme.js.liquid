@@ -1,3 +1,5 @@
+//  This will include Libraries & Plugins
+
 /////////////////////////////////////
 //  Unveil
 /////////////////////////////////////
@@ -35,86 +37,3 @@ jQuery(function ($) {
 
    "use strict";
 });
-
-
-$( document ).ready(function() {
-
-
-  // Enable elevate zoom when leave menu-item.
-  $('.site__categories-toggle').on('mouseleave', function(){
-    $('.product_gallery .flex-active-slide img').elevateZoom({
-      'zoomWindowWidth': 800,
-      'zoomWindowHeight': 700
-    });
-  });
-   
-  // Header Category 
-  var timerMainItem;
-  $('.main-nav-item').on("mouseenter", function(){
-    var _this = this;
-  
-    // Disable elevate zoom when hover menu-item.
-    $.removeData($('img'), 'elevateZoom');
-    $('.zoomContainer').remove();
-
-    timerMainItem = setTimeout(function() {
-      $('.main-nav-item').removeClass( "is_active" );
-      $( _this ).addClass( "is_active" );
-    }, 500);
-
-   }).on("mouseleave", function(){
-     clearTimeout(timerMainItem);
-
-   }).on("click", function(){
-     $( this ).toggleClass( "is_active" );
-   });
-
-   $('ul.tabs').each(function(){
-     var active, content, links = $(this).find('a');
-     active = links.first().addClass('active');
-     content = $(active.attr('href'));
-     links.not(':first').each(function () {
-       $($(this).attr('href')).hide();
-     });
-     $(this).find('a').click(function(e){
-       active.removeClass('active');
-       content.hide();
-       active = $(this);
-       content = $($(this).attr('href'));
-       active.addClass('active');
-       content.show();
-       return false;
-     });
-   });
-
-   $('.show-more-trigger').off('click');
-   $('.show-more-trigger').on('click', function(e) {
-     e.preventDefault();
-
-     var st = $(this).hasClass('closed') ? 'closed' : 'open';
-     var $Obj = $(this).parent();
-
-     $(this).toggleClass('closed');
-     if (st == 'closed') {
-       $Obj.find('.show-more-items').slideDown();
-     } else {
-       $Obj.find('.show-more-items').slideUp();
-     }
-   });
-
-   $('.filter-group h4').off('click');
-   $('.filter-group h4').on('click', function(e) {
-     e.preventDefault();
-
-     var st = $(this).hasClass('closed') ? 'closed' : 'open';
-     var $Obj = $(this).parent();
-
-     $(this).toggleClass('closed');
-     if (st == 'closed') {
-       $Obj.find('.scroll-content').slideUp();
-     } else {
-       $Obj.find('.scroll-content').slideDown();
-     }
-   });
-
- });
