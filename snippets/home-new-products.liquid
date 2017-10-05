@@ -4,7 +4,7 @@
 <div class="collection-wrapper new__products-wrapper">
   {% if settings.new_products_collection != blank and collections[settings.new_products_collection].handle == settings.new_products_collection and collections[settings.new_products_collection].products_count > 0 %}
   <div class="new__products-content clearfix">
-    {% for product in collections[settings.new_products_collection].products | limit: 8 %}
+    {% for product in collections[settings.new_products_collection].products | limit: 16 %}
     {% include 'product-grid-item' %}
     {% endfor %}
   </div>

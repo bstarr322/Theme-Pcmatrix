@@ -235,7 +235,7 @@
       "no_offers": "No collection specified.  You need to specify a collection in Theme Settings under Home Page in order to show featured products here.",
       "no_frontpage_offers_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"\/admin\/custom_collections\">add a product to this collection<\/a>.",
       "no_offers_html": "There are no products in the featured products collection you specified in theme settings under Home Page. This placeholder will appear until you <a href=\"\/admin\/custom_collections\">add a product to this collection<\/a>.",
-      "new_products_title": "New Products",
+      "new_products_title": "Featured Products",
       "best_sellers_title": "Best Sellers",
       "instagram_title": "Instagram"
     },
