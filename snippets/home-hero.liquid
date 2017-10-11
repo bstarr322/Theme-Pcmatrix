@@ -28,7 +28,7 @@
             {% for i in (1..3) %}
             {% capture bb_img %}bottom_banner_{{i}}{% endcapture %}
             {% capture bb_link %}bottom_banner_link_{{i}}{% endcapture %}
-            <li><a href="{{settings[rb_link]}}"><img src="{{ settings[bb_img] | img_url: 'master' }}" /></a></li>
+            <li><a href="{{settings[bb_link]}}"><img src="{{ settings[bb_img] | img_url: 'master' }}" /></a></li>
             {% endfor %}
           </ul>
         </div>

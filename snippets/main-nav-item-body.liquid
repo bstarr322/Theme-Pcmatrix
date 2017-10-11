@@ -61,6 +61,40 @@
     </ul>
 </div>
 {% endif %}
+  {% if link.title == 'Barcode Printers' %}
+<div class="main-nav-item-body">
+  <div class="nav-row">
+    <h4>{{ settings.nav_1_barcodeprinters_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_barcodeprinters_linklist_1].links %}
+        {%- assign sub_child_list_handle = item-link.title | handleize -%}
+  {%- assign product_counts = collections[sub_child_list_handle].all_products_count | plus: 0 -%}
+  <li class="sub-nav-item"><a href="{{ item-link.url }}" class="{% if product_counts > 0 %}has-products{% endif %}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_2_barcodeprinters_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_barcodeprinters_linklist_2].links %}
+        {%- assign sub_child_list_handle = item-link.title | handleize -%}
+  {%- assign product_counts = collections[sub_child_list_handle].all_products_count | plus: 0 -%}
+  <li class="sub-nav-item"><a href="{{ item-link.url }}" class="{% if product_counts > 0 %}has-products{% endif %}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-row">
+    <h4>{{ settings.nav_3_barcodeprinters_item }}</h4>
+    <ul>
+      {% for item-link in linklists[settings.main_barcodeprinters_linklist_3].links %}
+        {%- assign sub_child_list_handle = item-link.title | handleize -%}
+  {%- assign product_counts = collections[sub_child_list_handle].all_products_count | plus: 0 -%}
+  <li class="sub-nav-item"><a href="{{ item-link.url }}" class="{% if product_counts > 0 %}has-products{% endif %}">{{ item-link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+ 
+{% endif %}
 {% if link.title == 'Accessories' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
