@@ -17,6 +17,8 @@
 <div class="wrapper collection__single-grid">
   <div class="collection__filter-wrapper">
     <div class="collection__filter-content">
+      {% assign category_handle = collection.handle %}
+      {% include 'main-nav-item-body' %}
       {% include 'filter-menu' %}
     </div>
   </div>

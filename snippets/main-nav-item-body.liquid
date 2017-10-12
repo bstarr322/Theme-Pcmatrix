@@ -1,4 +1,4 @@
-{% if link.title == 'Refurbished Deals' %}
+{% if category_handle == 'refurbished-deals' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_refurbished_item }}</h4>
@@ -59,9 +59,10 @@
   <li class="sub-nav-item"><a href="{{ item-link.url }}" class="{% if product_counts > 0 %}has-products{% endif %}">{{ item-link.title }}</a></li>
       {% endfor %}
     </ul>
+  </div>
 </div>
 {% endif %}
-  {% if link.title == 'Barcode Printers' %}
+{% if category_handle == 'barcode-printers' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_barcodeprinters_item }}</h4>
@@ -93,9 +94,9 @@
       {% endfor %}
     </ul>
   </div>
- 
+ </div>
 {% endif %}
-{% if link.title == 'Accessories' %}
+{% if category_handle == 'accessories' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_accessories_item }}</h4>
@@ -196,7 +197,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Computers' %}
+{% if category_handle == 'computers' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_computers_item }}</h4>
@@ -257,7 +258,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Electronics' %}
+{% if category_handle == 'electronics' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_electronics_item }}</h4>
@@ -378,7 +379,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Computer Parts' %}
+{% if category_handle == 'computer-parts' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_computer_parts_item }}</h4>
@@ -479,7 +480,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Networking' %}
+{% if category_handle == 'networking' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_networking_item }}</h4>
@@ -540,7 +541,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Software & Gaming' %}
+{% if category_handle == 'software-gaming' %}
 <div class="main-nav-item-body">
   <div class="nav-row">
     <h4>{{ settings.nav_1_software_item }}</h4>
@@ -611,7 +612,7 @@
 </div>
 {% endif %}
 
-{% if link.title == 'Unbranded' %}
+{% if category_handle == 'unbranded' %}
 <div class="main-nav-item-body" style="top: 320px;">
   <div class="nav-row">
     <h4>{{ settings.nav_1_unbranded_item }}</h4>
