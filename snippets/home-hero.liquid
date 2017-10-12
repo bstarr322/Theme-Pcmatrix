@@ -12,7 +12,10 @@
                 {% for i in (1..5) %}
                   {% capture slider_img %}home_slider_{{i}}{% endcapture %}
                   {% capture slider_link %}home_slider_link_{{i}}{% endcapture %}
-                  <li class="swiper-slide"><a href="{{settings[slider_link]}}" data-img="{{ settings[slider_img] }}"><img src="{{ settings[slider_img] | img_url: 'master' }}" /></a></li>
+                  
+                  {% if settings[slider_img] != blank %}
+                    <li class="swiper-slide"><a href="{{settings[slider_link]}}" data-img="{{ settings[slider_img] }}"><img src="{{ settings[slider_img] | img_url: 'master' }}" /></a></li>
+                  {% endif %}
                 {% endfor %}
               </ul>
 
