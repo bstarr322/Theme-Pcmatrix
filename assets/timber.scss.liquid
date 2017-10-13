@@ -2215,7 +2215,7 @@ label.error {
 // Filter by Collections Styles
 .collection__filter-content {
   .main-nav-item-body {
-    display: none;
+    display: block;
     position: initial;
     padding: initial;
     border: initial;
@@ -2226,8 +2226,12 @@ label.error {
       float: initial;
       padding-bottom: 20px;
       border-bottom: 1px solid #eee;
+      width: initial;
+      margin-right: initial;
 
       h4 {
+        font-size: 15px;
+        text-transform: initial;
       }
 
       ul {
@@ -2235,6 +2239,11 @@ label.error {
 
         li {
           margin-bottom: 0.25em;
+
+          a {
+            color: #747474;
+            font-size: 13px;
+          }
         }
       }
     }
